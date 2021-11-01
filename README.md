@@ -1,2 +1,2 @@
-# stock-trade-simulator
-Capstone Project for SWDV691 - MS in Software Development 
+# Stock Trade Simulator
+SWDV691 - Capstone Project - MS in Software Development 
