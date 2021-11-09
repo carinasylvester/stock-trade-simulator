@@ -12,3 +12,16 @@ const getInitialTheme = () => {
   }
   return "light";
 };
+
+export const ThemeContext = createContext();
+
+export const ThemeProvider = ({ initialTheme, children }) => {
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  const rawSetTheme = (rawTheme) => {
+    const root = window.document.documentElement;
+    const isDark = rawTheme === "dark";
+    root.classList.remove(isDark ? "light" : "dark");
+    root.classList.add(rawTheme);
+    localStorage.setItem("color-theme", rawTheme);
+  };
