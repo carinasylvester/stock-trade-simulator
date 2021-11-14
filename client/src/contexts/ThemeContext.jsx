@@ -5,7 +5,8 @@ const getInitialTheme = () => {
     const storedPreferences= window.localStorage.getItem("color-theme");
     if (typeof storedPreferences=== "string") {
       return storedPreferences;
-    } const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
+    }
+    const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
     if (userMedia.matches) {
       return "dark";
     }
@@ -25,3 +26,18 @@ export const ThemeProvider = ({ initialTheme, children }) => {
     root.classList.add(rawTheme);
     localStorage.setItem("color-theme", rawTheme);
   };
+
+  if (initialTheme) {
+    rawSetTheme(initialTheme);
+  }
+
+  useEffect(() => {
+    rawSetTheme(theme);
+  }, [theme]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
