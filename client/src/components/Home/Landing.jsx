@@ -12,7 +12,7 @@ const Landing = () => {
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
               <h1 className="text-3xl font-semibold text-gray-800 uppercase dark:text-white lg:text-4xl">
-                { user?.result ? `Welcome back, ${String(user?.result.name).split(" ")[0]}.` : "Mock Stocks" }
+                { user?.result ? `Welcome back, ${String(user?.result.name).split(" ")[0]}.` : "Trading Simulator" }
               </h1>
               <p className="mt-2 text-gray-600 dark:text-gray-400 mb-6"> { user?.result ? <strong>TRADING SIMULATOR - </strong> : "" } Start off with a $100k in imaginary currency to see how you perform in the markets. Prices are reflective of real world stock performance.</p>
               <div className="flex flex-wrap">
