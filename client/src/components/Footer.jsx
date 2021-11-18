@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="w-full -mx-6 lg:w-2/5">
             <div className="px-6">
               <div>
-                <Link to="https://github.com/carinasylvester" className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Trading Simulator</Link>
+                <Link to="/" className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Trading Simulator</Link>
               </div>
 
               <p className="max-w-md mt-2 text-gray-500 dark:text-gray-400">Risk-free Trading for everyone!</p>
