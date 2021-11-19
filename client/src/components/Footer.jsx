@@ -47,8 +47,8 @@ const Footer = () => {
 
               <div>
                 <h3 className="text-gray-700 uppercase dark:text-white">Projects</h3>
-                <a href="https://github.com/carinasylvester" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline" target="_blank" rel="noopener noreferrer">Pathfinder</a>
-                <a href="https://github.com/carinasylvester" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline" target="_blank" rel="noopener noreferrer">WebGL FPS</a>
+                <a href="https://github.com/carinasylvester" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline" target="_blank" rel="noopener noreferrer">NFT Marketplace</a>
+                <a href="https://github.com/carinasylvester" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline" target="_blank" rel="noopener noreferrer">Chatbot</a>
               </div>
 
               <div>

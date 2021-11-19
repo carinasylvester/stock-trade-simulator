@@ -1,5 +1,5 @@
 import React from "react";
-import Stonks from '../../assets/stonks.jpeg'
+//import Stonks from '../../assets/stonks.jpeg';
 
 const About = () => {
   return (
@@ -17,7 +17,7 @@ const About = () => {
           <div className="mt-8 lg:mt-0 lg:w-1/2">
             <div className="flex items-center justify-center lg:justify-end">
               <div className="max-w-lg">
-                <img className="opacity-90 object-cover object-center w-full h-72 rounded-md shadow" src={Stonks} alt="Stonks webp" />
+               {/*<img className="opacity-90 object-cover object-center w-full h-72 rounded-md shadow" src={Stonks} alt="Stonks webp" />*/}
               </div>
             </div>
           </div>

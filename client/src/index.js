@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { ReactDOM }from 'react-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { reducer } from './reducers';
@@ -11,6 +11,9 @@ import './index.css';
 
 // redux global store
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
+//function store() {
+  //return createStore(reducer, compose(applyMiddleware(thunk)))
+//}
 
 ReactDOM.render(
   <Provider store={store}>
