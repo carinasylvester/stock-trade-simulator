@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-//import socketIOClient from "socket.io-client";
+import socketIOClient from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux';
 import { getStock } from '../../actions/stocks';
 import StockDetailsSkeleton from "./StockDetailsSkeleton";
-import CurrentPrice from "../CurrentPrice/CurrentPrice"
-import PriceChart from "../PriceChart/PriceChart";
+import CurrentPrice from "../CurrentPrice"
+import PriceChart from "../PriceChart";
 
 const StockDetails = (props) => {
   const { id } = props;
-  //const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
+  const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
   const stock = useSelector((state) => state.stocksReducer);
   const dispatch = useDispatch();
 

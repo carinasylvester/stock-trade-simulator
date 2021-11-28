@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ListViewSkeleton from './ListViewSkeleton';
 import CurrentPrice from "../../CurrentPrice";
 import PriceChart from "../../PriceChart";
@@ -18,7 +18,7 @@ const ListView = (props) => {
     setSortByTicker,
     setSortByPrice 
   } = props;
-  const history = useNavigate();
+  const history = useHistory();
 
   const detailPage = (id) => {
     history.push(`/stock/${id}`);

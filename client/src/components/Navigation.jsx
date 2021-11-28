@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-//import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-//import decode from 'jwt-decode';
+import decode from 'jwt-decode';
 import ToggleTheme from './ToggleTheme';
-//import { getUserInfo } from "../actions/auth";
+import { getUserInfo } from "../actions/auth";
 import { LOGOUT } from '../constants/actions';
 import DefaultAvatarImage from '../assets/avatar.jpg';
 
 const Navigation = () => {
 	const dispatch = useDispatch();
-	//const location = useLocation();
-	const history = useNavigate();
+	const location = useLocation();
+	const history = useHistory();
 	const container = useRef(null);
 	const [showDropdown, setShowDropdown] = useState(false);
 	const [menuHidden, setMenuHidden] = useState(true);
@@ -32,7 +31,7 @@ const Navigation = () => {
 		}
 	}, []);
 
-	/* useEffect(() => {
+	useEffect(() => {
 		const token = user?.token;
 		if (token) {
 			const decodedToken = decode(token);
@@ -42,7 +41,7 @@ const Navigation = () => {
 			dispatch(getUserInfo());
 		}
 		setUser(JSON.parse(localStorage.getItem('profile')));
-	}, [user?.token, location, logout, dispatch]); */
+	}, [user?.token, location, logout, dispatch]);
 
 	useEffect(() => {
 		const handleOutsideClick = (event) => {
@@ -72,7 +71,7 @@ const Navigation = () => {
 				<div className="md:flex md:items-center md:justify-between">
 					<div className="flex items-center justify-between">
 						<div className="text-xl font-semibold text-gray-700">
-							<NavLink className="text-xl font-bold text-gray-800 dark:text-white lg:text-xl hover:text-gray-700 dark:hover:text-gray-300" to="/">Trading Simulator</NavLink>
+							<Link className="text-xl font-bold text-gray-800 dark:text-white lg:text-xl hover:text-gray-700 dark:hover:text-gray-300" to="/">Stock Trading Simulator</Link>
 						</div>
 
 						<div className="flex md:hidden">
@@ -95,14 +94,14 @@ const Navigation = () => {
 
 					<div className={menuHidden ? "flex-1 md:flex md:items-center md:justify-between hidden" : "flex-1 md:flex md:items-center md:justify-between"}>
 						<div className="flex flex-col -mx-4 md:flex-row md:items-center md:mx-8">
-							<NavLink onClick={() => setMenuHidden(true)} exact to="/" activeClassName="text-blue-500 dark:text-blue-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Home</NavLink>
-							{/* <NavLink onClick={() => setMenuHidden(true)} exact to="/guide" activeClassName="text-blue-500 dark:text-blue-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Guide</NavLink> */}
-							<NavLink onClick={() => setMenuHidden(true)} exact to="/markets" activeClassName="text-blue-500 dark:text-blue-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Markets</NavLink>
-							{user?.result && <NavLink onClick={() => setMenuHidden(true)} exact to="/purchased" activeClassName="text-blue-500 dark:text-blue-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Investments</NavLink>}
+							<NavLink onClick={() => setMenuHidden(true)} exact to="/" activeClassName="text-purple-500 dark:text-purple-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Home</NavLink>
+							<NavLink onClick={() => setMenuHidden(true)} exact to="/guide" activeClassName="text-purple-500 dark:text-purple-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">About</NavLink>
+							<NavLink onClick={() => setMenuHidden(true)} exact to="/markets" activeClassName="text-purple-500 dark:text-purple-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Markets</NavLink>
+							{user?.result && <NavLink onClick={() => setMenuHidden(true)} exact to="/purchased" activeClassName="text-purple-500 dark:text-purple-400 font-bold" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Investments</NavLink>}
 							{user?.result ?
 								<>
 									<Link onClick={() => setMenuHidden(true)} to="/dashboard">
-										<div className="flex-row items-center w-full hover:gray-100 dark:hover-gray-700 md:hidden block px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200">
+										<div className="flex flex-row items-center w-full hover:gray-100 dark:hover-gray-700 md:hidden block px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200">
 											<div className="cursor-pointer mr-4 w-8 h-8 overflow-hidden rounded-full">
 												<img src={DefaultAvatarImage} className="object-cover w-full h-full" alt="avatar" />
 											</div>
@@ -110,13 +109,16 @@ const Navigation = () => {
 											<span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
 												<span aria-hidden="true" className="absolute inset-0 bg-yellow-200 dark:bg-yellow-700 opacity-50 rounded-full">
 												</span>
+												<span className="text-sm relative text-yellow-600 dark:text-yellow-400">
+													${user?.result.coins.toFixed(2)}
+												</span>
 											</span>
 										</div>
 									</Link>
-									<button onClick={() => { setMenuHidden(true); logout(); }} className="w-full md:hidden block mt-6 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 dark:bg-gray-600 rounded-md hover:bg-blue-600 dark:hover:bg-gray-700 md:mx-2 md:w-auto">Logout</button>
+									<button onClick={() => { setMenuHidden(true); logout(); }} className="w-full md:hidden block mt-6 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-purple-500 dark:bg-gray-600 rounded-md hover:bg-purple-600 dark:hover:bg-gray-700 md:mx-2 md:w-auto">Logout</button>
 								</>
 								:
-								<Link onClick={() => setMenuHidden(true)} to="/auth" className="md:hidden block mt-6 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 dark:bg-gray-600 rounded-md hover:bg-blue-600 dark:hover:bg-gray-700 md:mx-2 md:w-auto">Login / Register</Link>
+								<Link onClick={() => setMenuHidden(true)} to="/auth" className="md:hidden block mt-6 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-purple-500 dark:bg-purple-600 rounded-md hover:bg-purple-600 dark:hover:bg-gray-700 md:mx-2 md:w-auto">Login / Register</Link>
 							}
 						</div>
 
@@ -128,7 +130,7 @@ const Navigation = () => {
 										<span aria-hidden="true" className="absolute inset-0 bg-yellow-200 dark:bg-yellow-700 opacity-50 rounded-full">
 										</span>
 										<span className="text-sm relative text-yellow-600 dark:text-yellow-400">
-											 Number(${user?.result.coins.toFixed(2)}) 
+											${user?.result.coins.toFixed(2)}
 										</span>
 									</span>
 
@@ -155,7 +157,7 @@ const Navigation = () => {
 									</div>
 								</div>
 								:
-								<Link onClick={() => setMenuHidden(true)} to="/auth" className="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 dark:bg-gray-600 rounded-md hover:bg-blue-600 dark:hover:bg-gray-700 md:mx-2 md:w-auto">Login / Register</Link>
+								<Link onClick={() => setMenuHidden(true)} to="/auth" className="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-purple-500 dark:bg-gray-600 rounded-md hover:bg-purple-600 dark:hover:bg-gray-700 md:mx-2 md:w-auto">Login / Register</Link>
 							}
 						</div>
 					</div>

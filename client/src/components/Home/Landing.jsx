@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-//import Stocks from '../../assets/stonks.jpeg';
-import Stocks from '../../assets/stocks.svg';
+import Stocks from '../../assets/stocks2.svg';
 
 const Landing = () => {
   const [user,] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -15,12 +14,12 @@ const Landing = () => {
               <h1 className="text-3xl font-semibold text-gray-800 uppercase dark:text-white lg:text-4xl">
                 { user?.result ? `Welcome back, ${String(user?.result.name).split(" ")[0]}.` : "Trading Simulator" }
               </h1>
-              <p className="mt-2 text-gray-600 dark:text-gray-400 mb-6"> { user?.result ? <strong>TRADING SIMULATOR - </strong> : "" } Start off with a $100k in imaginary currency to see how you perform in the markets. Prices are reflective of real world stock performance.</p>
+              <p className="mt-2 text-gray-600 dark:text-gray-400 mb-6"> { user?.result ? <strong>Trading Simulator - </strong> : "" } Trading, without the risk. Practice investment strategies with an imaginary budget of $100k to see how you perform in the markets. Prices are reflective of real world stock performance.</p>
               <div className="flex flex-wrap">
-                <Link to="/markets" className="mr-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-blue-800 hover:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-700">
-                  Browse Markets
+                <Link to="/markets" className="mr-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-purple-600 rounded-md dark:bg-purple-800 hover:bg-purple-500 dark:hover:bg-purple-700 focus:outline-none focus:bg-purple-500 dark:focus:bg-purple-700">
+                  Market Data
                 </Link>
-                <Link to="/auth" className="mt-2 sm:mt-0 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-blue-800 hover:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-700">
+                <Link to="/auth" className="mt-2 sm:mt-0 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-purple-600 rounded-md dark:bg-purple-800 hover:bg-purple-500 dark:hover:bg-purple-700 focus:outline-none focus:bg-purple-500 dark:focus:bg-purple-700">
                   Get Started
                 </Link>
               </div>

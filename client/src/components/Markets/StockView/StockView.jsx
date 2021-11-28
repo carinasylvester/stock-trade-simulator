@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-//import socketIOClient from "socket.io-client";
+import socketIOClient from "socket.io-client";
 import { getStocks } from "../../../actions/stocks";
-// socket
-//import { SORT_STOCKS_BY_FIELD, MARKET_ERROR_OCCURRED } from '../../../constants/actions';
-import { SORT_STOCKS_BY_FIELD } from '../../../constants/actions';
+import { SORT_STOCKS_BY_FIELD, MARKET_ERROR_OCCURRED } from '../../../constants/actions';
 import ListView from "./ListView";
 import GridView from "./GridView";
 import TopInfoSection from "./TopInfoSection";
 import Pagination from "../../Pagination";
 
 const StockView = () => {
-  //const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
+  const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
   const errors = useSelector((state) => state.marketErrorsReducer);
   const stocks = useSelector((state) => state.stocksReducer);
   const [isListMode, setIsListMode] = useState(true);
@@ -28,14 +26,14 @@ const StockView = () => {
     dispatch(getStocks());
   }, [dispatch]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     socket.connect();
     dispatch({ type: MARKET_ERROR_OCCURRED, payload: "" });
     return () => {
       socket.disconnect();
       dispatch({ type: MARKET_ERROR_OCCURRED, payload: "" });
     }
-  }, [socket, dispatch]); */
+  }, [socket, dispatch]);
 
   const filteredStocks = stocks?.length ? stocks.filter((stock) => {
     return stock.name.toLowerCase().includes(searchFilter.toLowerCase()) ||
@@ -131,7 +129,7 @@ const StockView = () => {
               <ListView
                 filteredStocks={currentStocks}
                 errors={errors}
-                //socket={socket}
+                socket={socket}
                 searchStocks={searchStocks}
                 setIsListMode={setIsListMode}
                 sortByField={sortByField}
@@ -148,7 +146,7 @@ const StockView = () => {
               <GridView
                 filteredStocks={currentStocks}
                 errors={errors}
-                //socket={socket}
+                socket={socket}
                 searchStocks={searchStocks}
                 setIsListMode={setIsListMode}
               />

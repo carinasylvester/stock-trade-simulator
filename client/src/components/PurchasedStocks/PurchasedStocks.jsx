@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-//import socketIOClient from "socket.io-client";
+import socketIOClient from "socket.io-client";
 import { getPurchases } from '../../actions/purchased';
 import { useDispatch, useSelector } from 'react-redux';
-import PurchaseListView from "./PurchaseListView/PurchaseListView";
-import PurchaseListViewSkeleton from "./PurchaseListView/PurchaseListViewSkeleton";
-import PurchaseOverview from "./PurchaseOverview/PurchaseOverview";
-import PurchaseOverviewSkeleton from "./PurchaseOverview/PurchaseOverviewSkeleton";
+import PurchaseListView from "./PurchaseListView";
+import PurchaseListViewSkeleton from "./PurchaseListViewSkeleton";
+import PurchaseOverview from "./PurchaseOverview";
+import PurchaseOverviewSkeleton from "./PurchaseOverviewSkeleton";
 
 const PurchasedStocks = () => {
-  {/* const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
+  const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
   const purchases = useSelector((state) => state.purchasedReducer);
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const PurchasedStocks = () => {
     return () => {
       socket.disconnect();
     }
-  }, [socket]); */}
+  }, [socket]);
 
   return (
     <div className="bg-white dark:bg-gray-800">
@@ -36,7 +36,7 @@ const PurchasedStocks = () => {
               :
               <>
                 <PurchaseOverview purchases={purchases} />
-                {/*<PurchaseListView purchases={purchases} socket={socket} />*/}
+                <PurchaseListView purchases={purchases} socket={socket} />
               </>
           }
         </div>

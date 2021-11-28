@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-//import { Route, Redirect } from 'react-router-dom';
-import { Route, Navigate } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({ comp: Component, ...rest }) => {
   const [user] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -8,7 +7,7 @@ const ProtectedRoute = ({ comp: Component, ...rest }) => {
     <Route {...rest} render={({ props, location }) => {
       return user?.result
         ? <Component {...props} {...rest} />
-        : <Navigate to={{
+        : <Redirect to={{
           pathname: '/auth',
           state: { from: location }
         }}

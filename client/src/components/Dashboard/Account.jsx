@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { updateUserName, removeUserAccount } from '../../actions/auth';
 import { USER_ERROR_OCCURRED } from "../../constants/actions";
 
@@ -8,7 +8,7 @@ const initialState = { firstName: '', lastName: '' };
 
 const Account = (props) => {
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const history = useHistory();
   const [form, setForm] = useState(initialState);
   const errors = useSelector((state) => state.userErrorsReducer);
   const { user } = props;
