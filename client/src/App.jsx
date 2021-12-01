@@ -12,7 +12,7 @@ import PurchasedStocks from "./components/PurchasedStocks/PurchasedStocks";
 import TransactionForm from "./components/TransactionForm";
 import PurchasedStockDetails from "./components/PurchasedStockDetails/PurchasedStockDetails";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Guide from "./components/Guide";
+import About from "./components/About";
 import { Route, Switch } from "react-router-dom";
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
         <Navigation />
         <Switch>
           <Route exact path='/' render={() => (<Home />)} />
-          <Route exact path='/guide' render={() => (<Guide />)} />
+          <Route exact path='/about' render={() => (<About />)} />
           <Route exact path='/markets' render={() => (<Markets />)} />
           <Route exact path='/auth' render={() => (<Auth />)} />
           <Route exact path='/stock/:id' render={(props) => (<StockDetails id={props.match.params.id} />)} />

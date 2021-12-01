@@ -8,11 +8,11 @@ const NotFound = () => {
         <div className="p-6">
           <div>
             <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Error 404</span>
-            <h1 className="block mt-2 text-2xl font-semibold text-gray-800 dark:text-white hover:text-gray-600 hover:underline">Oops! Couldn't find the the page <code className="text-red-900 dark:text-red-600">{window.location.pathname}</code></h1>
+            <h1 className="block mt-2 text-2xl font-semibold text-gray-800 dark:text-white hover:text-gray-600 hover:underline">Sorry, we couldn't find what you were looking for... <code className="text-red-900 dark:text-red-600">{window.location.pathname}</code></h1>
           </div>
           <div className="mt-4">
             <div className="flex items-center justify-center">
-              <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">Error occurred on {new Date().toTimeString()}</span>
+              <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">Error occurred at {new Date().toTimeString()}</span>
             </div>
           </div>
           <div className="mt-8">
